@@ -1,3 +1,114 @@
+
+# BookMyShow clone
+
+This is a BookMyshow website clone developed with ReactJs and two API's
+
+## Acknowledgements
+
+ - [React Icons](https://react-icons.github.io/react-icons/)
+ - [TailwindCSS](https://tailwindcss.com/)
+ - [Headlessui](https://headlessui.com)
+
+
+## API Reference
+
+I have used two API's in this project.
+* The Movie Database API
+* Razorpay API
+
+
+#### Get all upcoming movies details
+
+```http
+ get('/movie/upcoming');
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `Object` | **Required**. Your API key |
+
+#### Get All popular movies details
+
+```http
+  get('/movie/popular')
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `api_key`      | `Object` | **Required**. Your API key |
+
+#### Get All top rated movies details
+
+```http
+  get('/movie/top_rated');
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `api_key`      | `Object` | **Required**. Your API key |
+
+#### Get All details of a particular movie on clicking the Movie poster card
+
+```http
+  gget(`/movie/${id}`);
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `Object` | **Required**. Your API key and it takes movie id |
+
+#### Get All the details of the Cast and Crew of the Movie 
+
+```http
+  get(`/movie/${id}/credits`);
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `Object` | **Required**. Your API key and it takes movie id |
+
+#### Get All similar movies details based on movie details
+
+```http
+  get(`/movie/${id}/similar`)
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `Object` | **Required**. Your API key and it takes movie id|
+
+#### Get All recommendations based on movie details
+
+```http
+  get(`/movie/${id}/recommendations`)
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `Object` | **Required**. Your API key and it takes movie id|
+
+#### To make payment i used Razorpay in built model that appears on clicking pay
+#### I wrote function LaunchRazorPay which consists a public_key that takes to razorpay model
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`API_KEY` from moviedb API
+
+`Public_KEY` from razorpay API
+
+## Authors
+
+- [@ Raju Gudikati](https://www.github.com/IamIsaacRaj)
+
+## 🚀 About Me
+Hi 👋, I'm Raju Gudikati
+
+A passionate frontend developer from Hyderabad,Telangana,India
+
+- 🌱 I’m currently learning **Full Stack Web Development**
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -19,7 +19,7 @@ const MoviePage = () => {
 
   useEffect(() => {
     const requestCast = async () => {
-      const getCast = await axios.get(`/movie/${id}/credits?api_key=27ddcf68258a1ea4a7185677f02dd9fd`);
+      const getCast = await axios.get(`/movie/${id}/credits`);
       setCast(getCast.data.cast);
     };
 
