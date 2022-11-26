@@ -16,7 +16,7 @@ const MovieInfo = ({movie}) => {
           {movie.original_title}
         </h1>
         <div className="flex  flex-col gap-2 text-white">
-          <h4>4k rating</h4>
+          <h4>{movie.vote_average} IMDB Rating</h4>
           <h4>English, Hindi, Telugu, Tamil, Kannada  </h4>
           <h4>
             {movie.runtime} min | {genres}

@@ -1,5 +1,8 @@
 import React from "react";
-import Slider from "react-slick";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
 
 const EntertainmentCard = (props) => {
   return (
@@ -31,45 +34,40 @@ const EntertainmentCardSlider = () => {
     "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:w-300/adventure-collection-202010140844.png",
   ];
 
-  const settings = {
-    infinite: false,
-    autoplay: false,
-    slidesToShow: 5,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 2,
-        },
+  const slideConfig = {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    pagination: {
+      clickable: true,
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 20,
       },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 10,
       },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 0,
       },
-    ],
+    },
+    modules: [Navigation],
+    className: "SwiperSlider",
+    navigation: true,
   };
 
   return (
     <>
-      <Slider {...settings}>
+      <Swiper {...slideConfig}>
         {EntertainmentImage.map((image, index) => (
-          <EntertainmentCard src={image} key={index} />
+          <SwiperSlide key={index}>
+            <EntertainmentCard src={image}  />
+          </SwiperSlide>
         ))}
-      </Slider>
+      </Swiper>
     </>
   );
 };

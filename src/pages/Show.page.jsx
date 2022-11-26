@@ -1,16 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from 'react-router-dom';
-import MovieLayoutHoc from '../layouts/Movie.layout';
-import axios from 'axios';
-import Slider from "react-slick"
-import { FaCcVisa, FaCcApplePay } from "react-icons/fa";
+import MovieLayoutHoc from "../layouts/Movie.layout";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import { MovieContext } from "../context/Movie.Context";
-import MovieHero from "../components/MovieHero/MovieHero.Component";
+import Slider from "react-slick";
+import { FaCcVisa, FaCcApplePay } from "react-icons/fa";
 import PosterSlider from "../components/PosterSlider/PosterSlider.Component";
+import MovieHero from "../components/MovieHero/MovieHero.Component";
 import Cast from "../components/Cast/Cast.Component";
 
-
-const MoviePage = () => {
+const ShowPage = () => {
   const { id } = useParams();
   const { movie, setMovie } = useContext(MovieContext);
   const [cast, setCast] = useState([]);
@@ -19,7 +18,7 @@ const MoviePage = () => {
 
   useEffect(() => {
     const requestCast = async () => {
-      const getCast = await axios.get(`/movie/${id}/credits`);
+      const getCast = await axios.get(`/tv/${id}/credits`);
       setCast(getCast.data.cast);
     };
 
@@ -28,7 +27,7 @@ const MoviePage = () => {
 
   useEffect(() => {
     const requestSimilarMovies = async () => {
-      const getSimilarMovies = await axios.get(`/movie/${id}/similar`);
+      const getSimilarMovies = await axios.get(`/tv/${id}/similar`);
       setSimilarMovies(getSimilarMovies.data.results);
     };
 
@@ -37,7 +36,9 @@ const MoviePage = () => {
 
   useEffect(() => {
     const requestRecommendedMovies = async () => {
-      const getRecommendedMovies = await axios.get(`/movie/${id}/recommendations`);
+      const getRecommendedMovies = await axios.get(
+        `/tv/${id}/recommendations`
+      );
       setRecommendedMovies(getRecommendedMovies.data.results);
     };
 
@@ -46,12 +47,13 @@ const MoviePage = () => {
 
   useEffect(() => {
     const requestMovie = async () => {
-      const getMovieData = await axios.get(`/movie/${id}`);
+      const getMovieData = await axios.get(`/tv/${id}`);
       setMovie(getMovieData.data);
     };
 
     requestMovie();
   }, [id]);
+
   const settingCast = {
     infinite: false,
     speed: 500,
@@ -69,7 +71,7 @@ const MoviePage = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 5,
           slidesToScroll: 2,
           initialSlide: 2,
         },
@@ -87,32 +89,31 @@ const MoviePage = () => {
   const settings = {
     infinite: false,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 4,
-    initialSlide: 10,
+    initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 3,
-          initialSlide: 8,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 5,
+          initialSlide: 3,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 1,
-          initialSlide: 3,
+          initialSlide: 4,
         },
       },
     ],
@@ -121,9 +122,9 @@ const MoviePage = () => {
   return (
     <>
       <MovieHero />
-      <div className="my-12 container px-4 lg-ml-20 ">
+      <div className="my-12 container px-4 lg-ml-20 lg:w-2/3">
         <div className="flex flex-col items-start gap-3">
-          <h1 className="text-gray-800 font-bold text-2xl">About the movie</h1>
+          <h1 className="text-gray-800 font-bold text-2xl">About the WebSeries</h1>
           <p>{movie.overview}</p>
         </div>
 
@@ -175,13 +176,15 @@ const MoviePage = () => {
             Cast and Crew
           </h2>
           <Slider {...settingCast}>
-            {cast.map((castData) => (
-              <Cast 
-              image = {castData.profile_path} 
-              castName = {castData.original_name} 
-              role = {castData.character} 
-              />
-            ))}
+            {cast.map(
+              (castData) => (
+                <Cast
+                  image={castData.profile_path}
+                  castName={castData.original_name}
+                  role={castData.character}
+                />
+              )
+            )}
           </Slider>
         </div>
 
@@ -190,7 +193,7 @@ const MoviePage = () => {
         </div>
 
         {/* recommended movies slider */}
-        <div className="my-8 ">
+        <div className="my-8">
           <PosterSlider
             config={settings}
             title="Recommended Movies"
@@ -215,4 +218,4 @@ const MoviePage = () => {
   );
 };
 
-export default MovieLayoutHoc(MoviePage);
+export default MovieLayoutHoc(ShowPage);

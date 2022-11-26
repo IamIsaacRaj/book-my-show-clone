@@ -1,0 +1,44 @@
+.mySwiper .swiper-button-prev,
+.mySwiper .swiper-button-next,
+.SwiperSlider .swiper-button-prev,
+.SwiperSlider .swiper-button-next {
+  top: 50%;
+  background: white;
+  border-radius: 100%;
+  padding: 5px !important;
+  width: 30px;
+  height: 30px;
+}
+
+.mySwiper .swiper-button-prev::after,
+.mySwiper .swiper-button-next::after {
+  font-size: 15px;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.SwiperSlider .swiper-button-next::after,
+.SwiperSlider .swiper-button-prev::after {
+  font-size: 15px;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color: black;
+}
+
+.SwiperSlider .swiper-button-prev {
+  left: 0px;
+  border: 2px solid #101eb9;
+  border-radius: 50%;
+  box-shadow: rgb(0 0 0 / 20%) 0px 3px 5px -1px,
+    rgb(0 0 0 / 14%) 0px 6px 10px 0px, rgb(0 0 0 / 12%) 0px 1px 18px 0px;
+}
+
+.SwiperSlider .swiper-button-next {
+  right: 0px;
+  border: 2px solid #101eb9;
+  box-shadow: rgb(0 0 0 / 20%) 0px 3px 5px -1px,
+    rgb(0 0 0 / 14%) 0px 6px 10px 0px, rgb(0 0 0 / 12%) 0px 1px 18px 0px;
+}

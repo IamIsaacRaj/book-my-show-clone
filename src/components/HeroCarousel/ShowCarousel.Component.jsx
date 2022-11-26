@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation, AutoPlay } from "swiper";
+import { Navigation } from "swiper";
 import axios from "axios";
 
-const HeroCarousel = () => {
+const ShowCarousel = () => {
   const [images, setImages] = useState([]);
   useEffect(() => {
     const requestPopularMovies = async() => {
-      const getPopularMovies = await axios.get('/movie/popular');
+      const getPopularMovies = await axios.get('/tv/popular');
 
       setImages(getPopularMovies.data.results);
     }
@@ -48,4 +48,4 @@ const HeroCarousel = () => {
   );
 };
 
-export default HeroCarousel;
+export default ShowCarousel;
