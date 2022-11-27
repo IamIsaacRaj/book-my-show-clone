@@ -3,7 +3,7 @@
 
 This is a BookMyshow website clone developed with ReactJs and two API's
 
-[Deployed Link](https://github.com/IamIsaacRaj/book-my-show-clone)
+[Deployed Link](https://book-my-show-clone-ashy.vercel.app/)
 
 ## Acknowledgements
 
