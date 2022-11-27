@@ -3,6 +3,8 @@
 
 This is a BookMyshow website clone developed with ReactJs and two API's
 
+[Deployed Link](https://github.com/IamIsaacRaj/book-my-show-clone)
+
 ## Acknowledgements
 
  - [React Icons](https://react-icons.github.io/react-icons/)
